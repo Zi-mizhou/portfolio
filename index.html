@@ -126,6 +126,36 @@ nav.scrolled{
   transform:translateY(-1px);
 }
 
+.theme-toggle{
+  width:40px;height:40px;
+  padding:0;
+  border-radius:50%;
+  background:var(--surface);
+  border:1px solid var(--border2);
+  color:var(--text2);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:all .25s;
+}
+.theme-toggle:hover{
+  color:var(--text);
+  border-color:rgba(124,58,237,.35);
+  box-shadow:0 4px 18px rgba(124,58,237,.18);
+}
+
+:root[data-theme='light']{
+  --bg:#f7f8fc;
+  --bg2:#eef1f8;
+  --surface:rgba(255,255,255,.75);
+  --surface2:rgba(255,255,255,.9);
+  --border:rgba(15,23,42,.12);
+  --border2:rgba(15,23,42,.18);
+  --text:#0b1020;
+  --text2:#4b5563;
+  --text3:#7b8597;
+  --accent-glow:rgba(124,58,237,.28);
+}
+
 .hamburger{
   display:none;
   flex-direction:column;
@@ -577,6 +607,35 @@ nav.scrolled{
   position:relative;
 }
 
+/* ====== About Timeline ====== */
+.about-timeline{
+  margin-top:24px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.timeline-item{
+  position:relative;
+  padding:14px 16px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.timeline-year{
+  font-size:12px;
+  color:var(--accent2);
+  font-weight:700;
+  letter-spacing:.08em;
+}
+.timeline-text{
+  font-size:13px;
+  color:var(--text2);
+  line-height:1.6;
+}
+
 /* ====== Footer ====== */
 footer{
   padding:32px 0;
@@ -653,6 +712,7 @@ footer{
   }
   .nav-cta{display:none}
   .hamburger{display:flex}
+  .theme-toggle{width:38px;height:38px;font-size:16px}
   .sec-header{flex-direction:column;align-items:flex-start;gap:8px}
   .sec-header .line{display:none}
   .container{padding:0 16px}
@@ -842,6 +902,7 @@ footer{
   <button class="hamburger" id="hamburger" onclick="toggleMobileNav()">
     <span></span><span></span><span></span>
   </button>
+  <button id="themeToggle" class="theme-toggle" title="Toggle theme">☾</button>
   <a href="#contact" class="nav-cta">Let's Talk</a>
 </nav>
 
@@ -941,6 +1002,20 @@ footer{
     <span class="label">Get In Touch</span>
     <div class="line"></div>
   </div>
+  <div class="about-timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-year">2024</div>
+      <div class="timeline-text">学习计算机基础与前端入门</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2025</div>
+      <div class="timeline-text">开始独立开发网页、小程序与工具项目</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2026</div>
+      <div class="timeline-text">完成可视化、3D漫游、AI工具与开源项目</div>
+    </div>
+  </div>
   <div class="contact-card reveal">
     <h2>一起<span class="gradient">创造点什么？</span></h2>
     <p>不管你有什么想法，或者只是想打个招呼，都欢迎联系我。</p>
@@ -1004,7 +1079,7 @@ const projects = [
     desc:'量大学下沙校区的 3D 第一人称漫游体验，WASD 移动、鼠标环顾、跳跃奔跑，小地图实时导航。',
     tags:['Three.js','WebGL','3D','交互'],
     screenshot:'campus-walk',
-    file:'中国计量大学第一人称漫游/量大校园漫游.html',
+    file:'campus-walk/量大校园漫游.html',
     label:'打开项目'
   },
   {
@@ -1014,7 +1089,7 @@ const projects = [
     desc:'雨夜氛围的交互叙事体验，走进充满未知谜题的存档楼，经历一系列离奇事件与发现。',
     tags:['HTML','JavaScript','叙事','探索'],
     screenshot:'archive-building',
-    file:'畸变存档楼_雨夜借阅室/畸变存档楼_雨夜借阅室.html',
+    file:'archive-building/畸变存档楼_雨夜借阅室.html',
     label:'打开项目'
   },
   {
@@ -1024,7 +1099,7 @@ const projects = [
     desc:'纯 SVG 手工绘制的海滨骑行动画，云朵漂移、车轮旋转、水光闪烁，全 CSS 驱动，支持暂停播放。',
     tags:['SVG','CSS 动画','创意','手绘'],
     screenshot:'pelican-bike',
-    file:'6luna极高鹈鹕测试/pelican-bike.html',
+    file:'pelican-bike/pelican-bike.html',
     label:'打开项目'
   },
   {
@@ -1426,6 +1501,29 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape') closeModal();
 });
 
+// ===================== THEME TOGGLE =====================
+function initThemeToggle(){
+  const btn = document.getElementById('themeToggle');
+  if(!btn) return;
+  const saved = localStorage.getItem('theme');
+  if(saved === 'light') {
+    document.documentElement.setAttribute('data-theme','light');
+    btn.textContent = '☀';
+  }
+  btn.addEventListener('click',()=>{
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if(isLight){
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme','dark');
+      btn.textContent = '☾';
+    } else {
+      document.documentElement.setAttribute('data-theme','light');
+      localStorage.setItem('theme','light');
+      btn.textContent = '☀';
+    }
+  });
+}
+
 // ===================== MOBILE NAV =====================
 function toggleMobileNav(){
   document.getElementById('navLinks').classList.toggle('open');
@@ -1435,6 +1533,8 @@ function closeMobileNav(){
   document.getElementById('navLinks').classList.remove('open');
   document.getElementById('hamburger').classList.remove('open');
 }
+
+initThemeToggle();
 </script>
 </body>
 </html>
