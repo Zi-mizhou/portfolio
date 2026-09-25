@@ -126,6 +126,27 @@ nav.scrolled{
   transform:translateY(-1px);
 }
 
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:8px;
+  z-index:101;
+}
+.hamburger span{
+  display:block;
+  width:22px;height:2px;
+  background:var(--text);
+  border-radius:99px;
+  transition:all .3s;
+}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
 /* ====== Hero ====== */
 .hero{
   min-height:100vh;
@@ -618,6 +639,20 @@ footer{
   .hero h1 .cursor-line{height:60%;width:2px}
   .contact-card{padding:40px 24px}
   .nav-links{display:none}
+  .nav-links.open{
+    display:flex;
+    flex-direction:column;
+    position:fixed;
+    top:60px;left:0;right:0;
+    background:rgba(8,11,20,.95);
+    backdrop-filter:blur(20px);
+    padding:20px 24px;
+    gap:12px;
+    border-bottom:1px solid var(--border);
+    z-index:99;
+  }
+  .nav-cta{display:none}
+  .hamburger{display:flex}
   .sec-header{flex-direction:column;align-items:flex-start;gap:8px}
   .sec-header .line{display:none}
   .container{padding:0 16px}
@@ -799,11 +834,14 @@ footer{
     <span class="logo-dot"></span>
     <span class="brand-text">ZhangShao</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#projects" onclick="closeMobileNav()">Projects</a></li>
+    <li><a href="#about" onclick="closeMobileNav()">About</a></li>
+    <li><a href="#contact" onclick="closeMobileNav()">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
   <a href="#contact" class="nav-cta">Let's Talk</a>
 </nav>
 
@@ -1031,7 +1069,7 @@ const filterCategories = [
   {label:'数据可视化', value:'数据'},
   {label:'3D 交互', value:'3D'},
   {label:'AI 工具', value:'AI'},
-  {label:'创意作品', value:'创意'},
+  {label:'创意作品', value:'创意作品'},
   {label:'开源工具', value:'开源'},
   {label:'学术论文', value:'学术'}
 ];
@@ -1387,6 +1425,16 @@ setTimeout(()=>{
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape') closeModal();
 });
+
+// ===================== MOBILE NAV =====================
+function toggleMobileNav(){
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+function closeMobileNav(){
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
 </script>
 </body>
 </html>
