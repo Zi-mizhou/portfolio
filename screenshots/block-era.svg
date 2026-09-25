@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="方块纪元 预览">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e1713"/>
+      <stop offset="1" stop-color="#13221a"/>
+    </linearGradient>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c7ff9d"/>
+      <stop offset="1" stop-color="#7ce85f"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#102017"/>
+      <stop offset="1" stop-color="#0b150f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect x="0" y="430" width="1200" height="245" fill="url(#ground)"/>
+  <g opacity="0.92">
+    <g transform="translate(120 330)">
+      <rect width="86" height="86" fill="url(#tile)" rx="4"/>
+      <path d="M0 0h86v43H0z" fill="#aef882" opacity="0.85"/>
+      <path d="M0 43h86v43H0z" fill="#69c84e" opacity="0.85"/>
+      <path d="M0 0h43v86H0z" fill="#bdf68b" opacity="0.75"/>
+    </g>
+    <g transform="translate(310 262)">
+      <rect width="92" height="92" fill="url(#tile)" rx="4"/>
+      <path d="M0 0h92v46H0z" fill="#bff58d" opacity="0.9"/>
+      <path d="M0 46h92v46H0z" fill="#6bc24d" opacity="0.8"/>
+      <path d="M0 0h46v92H0z" fill="#b7f488" opacity="0.75"/>
+    </g>
+    <g transform="translate(520 318)">
+      <rect width="106" height="106" fill="url(#tile)" rx="6"/>
+      <path d="M0 0h106v53H0z" fill="#c4f994" opacity="0.9"/>
+      <path d="M0 53h106v53H0z" fill="#6fcb4e" opacity="0.85"/>
+      <path d="M0 0h53v106H0z" fill="#bdf88a" opacity="0.78"/>
+    </g>
+    <g transform="translate(742 236)">
+      <rect width="112" height="112" fill="url(#tile)" rx="6"/>
+      <path d="M0 0h112v56H0z" fill="#c9fb9e" opacity="0.9"/>
+      <path d="M0 56h112v56H0z" fill="#70ce4f" opacity="0.85"/>
+      <path d="M0 0h56v112H0z" fill="#c2f995" opacity="0.8"/>
+    </g>
+  </g>
+  <g fill="#e9ffe1" opacity="0.95">
+    <circle cx="930" cy="180" r="5"/>
+    <circle cx="1025" cy="230" r="4"/>
+    <circle cx="1080" cy="150" r="3"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#dff7d0">
+    <text x="88" y="118" font-size="48" font-weight="800" fill="#f5ffe7">方块纪元</text>
+    <text x="92" y="156" font-size="22" fill="#b7d7a6" letter-spacing="2">浏览器沙盒 · 探索 / 建造</text>
+  </g>
+  <g fill="#102017" opacity="0.25">
+    <rect x="0" y="620" width="1200" height="55"/>
+  </g>
+</svg>
