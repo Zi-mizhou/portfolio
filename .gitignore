@@ -1,0 +1,29 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node
+node_modules/
+*.log
+
+# Binaries (downloaded at runtime by setup script)
+bin/
+
+# Large files
+*.mp4
+*.mov
+*.avi
+
+# Temp files
+*.tmp
+*.bak
+
+# Large video files
+*.mp4

@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#080d16"/>
+      <stop offset="100%" stop-color="#0f1923"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#55e0bd"/>
+      <stop offset="100%" stop-color="#ffb85f"/>
+    </linearGradient>
+    <linearGradient id="line1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#55e0bd"/>
+      <stop offset="100%" stop-color="#4ee1be"/>
+    </linearGradient>
+    <filter id="glow1"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg1)"/>
+  
+  <!-- Header bar -->
+  <rect x="0" y="0" width="800" height="48" fill="#0d1520" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+  <circle cx="16" cy="24" r="6" fill="#ff5f56"/>
+  <circle cx="32" cy="24" r="6" fill="#ffbd2e"/>
+  <circle cx="48" cy="24" r="6" fill="#27c93f"/>
+  <text x="76" y="29" fill="#91a1b6" font-family="Inter,sans-serif" font-size="12" font-weight="500">Signal / 基金监控台</text>
+  <rect x="690" y="14" width="90" height="24" rx="6" fill="rgba(255,184,95,.12)" stroke="rgba(255,184,95,.25)"/>
+  <text x="710" y="30" fill="#ffb85f" font-family="Inter,sans-serif" font-size="10" font-weight="600">演示数据</text>
+  
+  <!-- Metrics cards -->
+  <rect x="16" y="62" width="170" height="64" rx="12" fill="rgba(16,25,37,.8)" stroke="rgba(169,190,213,.1)"/>
+  <text x="32" y="82" fill="#91a1b6" font-family="Inter,sans-serif" font-size="11">关注基金</text>
+  <text x="32" y="110" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="24" font-weight="700">5</text>
+  
+  <rect x="200" y="62" width="170" height="64" rx="12" fill="rgba(16,25,37,.8)" stroke="rgba(169,190,213,.1)"/>
+  <text x="216" y="82" fill="#91a1b6" font-family="Inter,sans-serif" font-size="11">上涨 / 下跌</text>
+  <text x="216" y="106" fill="#55e0bd" font-family="Inter,sans-serif" font-size="20" font-weight="700">3</text>
+  <text x="248" y="106" fill="#91a1b6" font-family="Inter,sans-serif" font-size="14">/</text>
+  <text x="260" y="106" fill="#ff7d86" font-family="Inter,sans-serif" font-size="20" font-weight="700">2</text>
+  
+  <rect x="384" y="62" width="170" height="64" rx="12" fill="rgba(16,25,37,.8)" stroke="rgba(169,190,213,.1)"/>
+  <text x="400" y="82" fill="#91a1b6" font-family="Inter,sans-serif" font-size="11">今日最强</text>
+  <text x="400" y="106" fill="#55e0bd" font-family="Inter,sans-serif" font-size="18" font-weight="700">159915</text>
+  
+  <rect x="568" y="62" width="170" height="64" rx="12" fill="rgba(16,25,37,.8)" stroke="rgba(169,190,213,.1)"/>
+  <text x="584" y="82" fill="#91a1b6" font-family="Inter,sans-serif" font-size="11">组合波动</text>
+  <text x="584" y="106" fill="#ffb85f" font-family="Inter,sans-serif" font-size="18" font-weight="700">中等</text>
+  
+  <!-- Main table -->
+  <rect x="16" y="142" width="490" height="340" rx="12" fill="rgba(16,25,37,.8)" stroke="rgba(169,190,213,.1)"/>
+  <text x="32" y="170" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="14" font-weight="700">ETF 观察池</text>
+  <text x="32" y="188" fill="#91a1b6" font-family="Inter,sans-serif" font-size="11">点击一行，查看趋势评分</text>
+  
+  <!-- Table header -->
+  <rect x="32" y="200" width="458" height="24" rx="4" fill="rgba(0,0,0,.2)"/>
+  <text x="48" y="216" fill="#617188" font-family="Inter,sans-serif" font-size="10">基金</text>
+  <text x="220" y="216" fill="#617188" font-family="Inter,sans-serif" font-size="10">现价</text>
+  <text x="300" y="216" fill="#617188" font-family="Inter,sans-serif" font-size="10">涨跌幅</text>
+  <text x="380" y="216" fill="#617188" font-family="Inter,sans-serif" font-size="10">折溢价</text>
+  <text x="460" y="216" fill="#617188" font-family="Inter,sans-serif" font-size="10">状态</text>
+  
+  <!-- Table rows -->
+  <rect x="32" y="228" width="458" height="42" rx="6" fill="rgba(85,224,189,.06)" stroke="rgba(85,224,189,.15)"/>
+  <text x="48" y="254" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="12" font-weight="600">510300</text>
+  <text x="120" y="254" fill="#91a1b6" font-family="Inter,sans-serif" font-size="10">沪深300ETF</text>
+  <text x="220" y="254" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="12">¥3.92</text>
+  <text x="300" y="254" fill="#55e0bd" font-family="Inter,sans-serif" font-size="12">+0.64%</text>
+  <text x="380" y="254" fill="#55e0bd" font-family="Inter,sans-serif" font-size="12">+0.08%</text>
+  <rect x="455" y="243" width="36" height="16" rx="4" fill="rgba(85,224,189,.12)"/>
+  <text x="463" y="255" fill="#55e0bd" font-family="Inter,sans-serif" font-size="9" font-weight="600">偏强</text>
+  
+  <rect x="32" y="272" width="458" height="42" rx="6" fill="rgba(0,0,0,.15)"/>
+  <text x="48" y="298" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="12" font-weight="600">159915</text>
+  <text x="120" y="298" fill="#91a1b6" font-family="Inter,sans-serif" font-size="10">创业板ETF</text>
+  <text x="220" y="298" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="12">¥2.34</text>
+  <text x="300" y="298" fill="#55e0bd" font-family="Inter,sans-serif" font-size="12">+1.42%</text>
+  <text x="380" y="298" fill="#55e0bd" font-family="Inter,sans-serif" font-size="12">+0.12%</text>
+  <rect x="455" y="287" width="36" height="16" rx="4" fill="rgba(85,224,189,.12)"/>
+  <text x="463" y="299" fill="#55e0bd" font-family="Inter,sans-serif" font-size="9" font-weight="600">偏强</text>
+  
+  <rect x="32" y="316" width="458" height="42" rx="6" fill="rgba(0,0,0,.15)"/>
+  <text x="48" y="342" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="12" font-weight="600">588000</text>
+  <text x="120" y="342" fill="#91a1b6" font-family="Inter,sans-serif" font-size="10">科创50ETF</text>
+  <text x="220" y="342" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="12">¥1.05</text>
+  <text x="300" y="342" fill="#55e0bd" font-family="Inter,sans-serif" font-size="12">+1.18%</text>
+  <text x="380" y="342" fill="#ff7d86" font-family="Inter,sans-serif" font-size="12">-0.06%</text>
+  <rect x="455" y="331" width="36" height="16" rx="4" fill="rgba(85,224,189,.12)"/>
+  <text x="463" y="343" fill="#55e0bd" font-family="Inter,sans-serif" font-size="9" font-weight="600">偏强</text>
+  
+  <rect x="32" y="360" width="458" height="42" rx="6" fill="rgba(0,0,0,.15)"/>
+  <text x="48" y="386" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="12" font-weight="600">512880</text>
+  <text x="120" y="386" fill="#91a1b6" font-family="Inter,sans-serif" font-size="10">证券ETF</text>
+  <text x="220" y="386" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="12">¥1.12</text>
+  <text x="300" y="386" fill="#ff7d86" font-family="Inter,sans-serif" font-size="12">-0.38%</text>
+  <text x="380" y="386" fill="#55e0bd" font-family="Inter,sans-serif" font-size="12">+0.05%</text>
+  <rect x="455" y="375" width="36" height="16" rx="4" fill="rgba(255,184,95,.12)"/>
+  <text x="463" y="387" fill="#ffb85f" font-family="Inter,sans-serif" font-size="9" font-weight="600">观察</text>
+  
+  <rect x="32" y="404" width="458" height="42" rx="6" fill="rgba(0,0,0,.15)"/>
+  <text x="48" y="430" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="12" font-weight="600">518880</text>
+  <text x="120" y="430" fill="#91a1b6" font-family="Inter,sans-serif" font-size="10">黄金ETF</text>
+  <text x="220" y="430" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="12">¥5.86</text>
+  <text x="300" y="430" fill="#55e0bd" font-family="Inter,sans-serif" font-size="12">+0.26%</text>
+  <text x="380" y="430" fill="#55e0bd" font-family="Inter,sans-serif" font-size="12">+0.18%</text>
+  <rect x="455" y="419" width="36" height="16" rx="4" fill="rgba(85,224,189,.12)"/>
+  <text x="463" y="431" fill="#55e0bd" font-family="Inter,sans-serif" font-size="9" font-weight="600">偏强</text>
+  
+  <!-- Right side: signal panel -->
+  <rect x="522" y="142" width="262" height="340" rx="12" fill="rgba(16,25,37,.8)" stroke="rgba(169,190,213,.1)"/>
+  <text x="538" y="170" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="14" font-weight="700">趋势观察</text>
+  <rect x="538" y="180" width="50" height="16" rx="4" fill="rgba(255,184,95,.12)"/>
+  <text x="546" y="192" fill="#ffb85f" font-family="Inter,sans-serif" font-size="9">510300</text>
+  
+  <!-- Big score -->
+  <text x="538" y="230" fill="#55e0bd" font-family="Inter,sans-serif" font-size="42" font-weight="800">64</text>
+  <text x="610" y="230" fill="#91a1b6" font-family="Inter,sans-serif" font-size="14">/ 100</text>
+  <text x="538" y="252" fill="#91a1b6" font-family="Inter,sans-serif" font-size="11">偏稳 · 结构稳定</text>
+  
+  <!-- Meter bar -->
+  <rect x="538" y="270" width="230" height="6" rx="3" fill="#26364a"/>
+  <rect x="538" y="270" width="147" height="6" rx="3" fill="url(#line1)"/>
+  <text x="538" y="292" fill="#617188" font-family="Inter,sans-serif" font-size="9">保守</text>
+  <text x="748" y="292" fill="#617188" font-family="Inter,sans-serif" font-size="9">进攻</text>
+  <text text-anchor="end" x="768" y="292" fill="#55e0bd" font-family="Inter,sans-serif" font-size="9" font-weight="600">64</text>
+  
+  <!-- Mini stats -->
+  <rect x="538" y="310" width="110" height="56" rx="8" fill="rgba(0,0,0,.15)"/>
+  <text x="550" y="328" fill="#91a1b6" font-family="Inter,sans-serif" font-size="10">最新价</text>
+  <text x="550" y="350" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="16" font-weight="700">¥3.92</text>
+  
+  <rect x="658" y="310" width="110" height="56" rx="8" fill="rgba(0,0,0,.15)"/>
+  <text x="670" y="328" fill="#91a1b6" font-family="Inter,sans-serif" font-size="10">日内波动</text>
+  <text x="670" y="350" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="16" font-weight="700">1.14%</text>
+  
+  <rect x="538" y="378" width="110" height="56" rx="8" fill="rgba(0,0,0,.15)"/>
+  <text x="550" y="396" fill="#91a1b6" font-family="Inter,sans-serif" font-size="10">折溢价</text>
+  <text x="550" y="418" fill="#55e0bd" font-family="Inter,sans-serif" font-size="16" font-weight="700">+0.08%</text>
+  
+  <rect x="658" y="378" width="110" height="56" rx="8" fill="rgba(0,0,0,.15)"/>
+  <text x="670" y="396" fill="#91a1b6" font-family="Inter,sans-serif" font-size="10">风险等级</text>
+  <text x="670" y="418" fill="#ffb85f" font-family="Inter,sans-serif" font-size="16" font-weight="700">中等</text>
+  
+  <!-- Sparkline area -->
+  <rect x="538" y="448" width="230" height="24" rx="4" fill="rgba(0,0,0,.2)"/>
+  <polyline points="548,464 558,460 568,462 578,458 588,460 598,456 608,458 618,454 628,456 638,452 648,454 658,450 668,452 678,448 688,450 698,446 708,448 718,444 728,446 738,444 748,446 758,444" fill="none" stroke="#55e0bd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow1)"/>
+  
+  <!-- Footer bar -->
+  <rect x="16" y="462" width="768" height="24" rx="6" fill="rgba(16,25,37,.8)" stroke="rgba(169,190,213,.08)"/>
+  <text x="32" y="478" fill="#617188" font-family="Inter,sans-serif" font-size="9">⚠ 重要提示：页面当前是基金监控台原型，使用演示数据。趋势评分不是收益预测，也不构成投资建议。</text>
+</svg>

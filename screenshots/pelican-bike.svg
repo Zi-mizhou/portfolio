@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="sky5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#87ceeb"/>
+      <stop offset="60%" stop-color="#b8e0f0"/>
+      <stop offset="100%" stop-color="#e0f0e8"/>
+    </linearGradient>
+    <linearGradient id="sea5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5cb8d8"/>
+      <stop offset="100%" stop-color="#3a8ca8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="800" height="300" fill="url(#sky5)"/>
+  
+  <!-- Sun -->
+  <circle cx="650" cy="80" r="40" fill="#fff4d4" opacity="0.9"/>
+  <circle cx="650" cy="80" r="55" fill="none" stroke="rgba(255,244,212,.3)" stroke-width="2"/>
+  
+  <!-- Clouds -->
+  <g opacity="0.8">
+    <ellipse cx="150" cy="60" rx="50" ry="20" fill="white"/>
+    <ellipse cx="180" cy="55" rx="35" ry="18" fill="white"/>
+    <ellipse cx="120" cy="58" rx="30" ry="15" fill="white"/>
+    
+    <ellipse cx="400" cy="40" rx="40" ry="16" fill="white"/>
+    <ellipse cx="425" cy="38" rx="30" ry="14" fill="white"/>
+    
+    <ellipse cx="550" cy="70" rx="35" ry="14" fill="white"/>
+    <ellipse cx="575" cy="68" rx="25" ry="12" fill="white"/>
+  </g>
+  
+  <!-- Sea -->
+  <rect x="0" y="300" width="800" height="200" fill="url(#sea5)"/>
+  
+  <!-- Sea waves -->
+  <path d="M 0,320 Q 50,310 100,320 Q 150,330 200,320 Q 250,310 300,320 Q 350,330 400,320 Q 450,310 500,320 Q 550,330 600,320 Q 650,310 700,320 Q 750,330 800,320 L 800,340 Q 750,350 700,340 Q 650,330 600,340 Q 550,350 500,340 Q 450,330 400,340 Q 350,350 300,340 Q 250,330 200,340 Q 150,350 100,340 Q 50,330 0,340 Z" fill="rgba(255,255,255,.15)"/>
+  
+  <!-- Water reflections -->
+  <ellipse cx="200" cy="340" rx="30" ry="3" fill="rgba(255,255,255,.2)"/>
+  <ellipse cx="450" cy="350" rx="40" ry="3" fill="rgba(255,255,255,.15)"/>
+  <ellipse cx="650" cy="335" rx="25" ry="3" fill="rgba(255,255,255,.2)"/>
+  
+  <!-- Path / Beach -->
+  <rect x="0" y="420" width="800" height="80" fill="#f5e6c8"/>
+  
+  <!-- Road -->
+  <rect x="0" y="380" width="800" height="40" fill="#c8b896"/>
+  <line x1="0" y1="400" x2="800" y2="400" stroke="#f0e8d0" stroke-width="2" stroke-dasharray="20,15"/>
+  
+  <!-- Pelican character -->
+  <!-- Body -->
+  <ellipse cx="380" cy="340" rx="60" ry="35" fill="#f0f0f0"/>
+  <ellipse cx="380" cy="335" rx="55" ry="30" fill="#fafafa"/>
+  
+  <!-- Head -->
+  <circle cx="430" cy="310" r="25" fill="#fafafa"/>
+  
+  <!-- Beak -->
+  <path d="M 450,305 Q 480,300 485,310 Q 480,318 450,315 Z" fill="#ff8c42"/>
+  <path d="M 450,315 Q 470,313 485,310" stroke="#e06030" stroke-width="1" fill="none"/>
+  
+  <!-- Eye -->
+  <circle cx="438" cy="305" r="4" fill="#1a1a2e"/>
+  <circle cx="439" cy="304" r="1.5" fill="white"/>
+  
+  <!-- Wing -->
+  <ellipse cx="360" cy="330" rx="25" ry="15" fill="#e8e8e8" transform="rotate(-10 360 330)"/>
+  
+  <!-- Tail feathers -->
+  <path d="M 320,340 Q 300,335 295,345 Q 305,348 320,345 Z" fill="#e8e8e8"/>
+  <path d="M 320,345 Q 298,348 293,358 Q 305,355 320,350 Z" fill="#d8d8d8"/>
+  
+  <!-- Legs -->
+  <line x1="360" y1="370" x2="355" y2="395" stroke="#ff8c42" stroke-width="3" stroke-linecap="round"/>
+  <line x1="400" y1="370" x2="405" y2="395" stroke="#ff8c42" stroke-width="3" stroke-linecap="round"/>
+  <line x1="350" y1="395" x2="345" y2="400" stroke="#ff8c42" stroke-width="3" stroke-linecap="round"/>
+  <line x1="355" y1="395" x2="365" y2="400" stroke="#ff8c42" stroke-width="3" stroke-linecap="round"/>
+  <line x1="400" y1="395" x2="395" y2="400" stroke="#ff8c42" stroke-width="3" stroke-linecap="round"/>
+  <line x1="405" y1="395" x2="415" y2="400" stroke="#ff8c42" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Bicycle -->
+  <!-- Frame -->
+  <line x1="320" y1="370" x2="380" y2="370" stroke="#e8e8e8" stroke-width="3"/>
+  <line x1="380" y1="370" x2="420" y2="390" stroke="#e8e8e8" stroke-width="3"/>
+  <line x1="380" y1="370" x2="360" y2="390" stroke="#e8e8e8" stroke-width="3"/>
+  <line x1="420" y1="390" x2="440" y2="370" stroke="#e8e8e8" stroke-width="3"/>
+  
+  <!-- Front wheel -->
+  <circle cx="450" cy="410" r="28" fill="none" stroke="#333" stroke-width="3"/>
+  <circle cx="450" cy="410" r="3" fill="#333"/>
+  <!-- Spokes -->
+  <line x1="450" y1="382" x2="450" y2="438" stroke="#888" stroke-width="1"/>
+  <line x1="422" y1="410" x2="478" y2="410" stroke="#888" stroke-width="1"/>
+  <line x1="430" y1="390" x2="470" y2="430" stroke="#888" stroke-width="1"/>
+  <line x1="470" y1="390" x2="430" y2="430" stroke="#888" stroke-width="1"/>
+  
+  <!-- Back wheel -->
+  <circle cx="320" cy="410" r="28" fill="none" stroke="#333" stroke-width="3"/>
+  <circle cx="320" cy="410" r="3" fill="#333"/>
+  <line x1="320" y1="382" x2="320" y2="438" stroke="#888" stroke-width="1"/>
+  <line x1="292" y1="410" x2="348" y2="410" stroke="#888" stroke-width="1"/>
+  <line x1="300" y1="390" x2="340" y2="430" stroke="#888" stroke-width="1"/>
+  <line x1="340" y1="390" x2="300" y2="430" stroke="#888" stroke-width="1"/>
+  
+  <!-- Handlebar -->
+  <line x1="440" y1="370" x2="450" y2="360" stroke="#666" stroke-width="3" stroke-linecap="round"/>
+  <line x1="445" y1="360" x2="455" y2="360" stroke="#666" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Saddle -->
+  <ellipse cx="380" cy="365" rx="10" ry="4" fill="#333"/>
+  
+  <!-- Motion lines -->
+  <line x1="280" y1="350" x2="260" y2="350" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="275" y1="360" x2="250" y2="360" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="280" y1="370" x2="255" y2="370" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Birds -->
+  <path d="M 100,100 Q 110,95 120,100 Q 130,95 140,100" stroke="rgba(50,50,70,.3)" stroke-width="1.5" fill="none"/>
+  <path d="M 200,80 Q 208,76 216,80 Q 224,76 232,80" stroke="rgba(50,50,70,.25)" stroke-width="1.5" fill="none"/>
+  <path d="M 550,120 Q 558,116 566,120 Q 574,116 582,120" stroke="rgba(50,50,70,.2)" stroke-width="1.5" fill="none"/>
+  
+  <!-- Info panel -->
+  <rect x="16" y="16" width="220" height="50" rx="10" fill="rgba(0,0,0,.5)" stroke="rgba(255,255,255,.15)"/>
+  <text x="30" y="38" fill="#fff" font-family="Inter,sans-serif" font-size="13" font-weight="600">🚴 海风骑行</text>
+  <text x="30" y="55" fill="rgba(255,255,255,.7)" font-family="Inter,sans-serif" font-size="10">纯 SVG 手绘动画 · CSS 驱动</text>
+  
+  <!-- Controls -->
+  <rect x="620" y="440" width="164" height="44" rx="8" fill="rgba(0,0,0,.5)" stroke="rgba(255,255,255,.15)"/>
+  <circle cx="645" cy="462" r="8" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+  <rect x="641" y="456" width="3" height="12" fill="rgba(255,255,255,.8)" rx="1"/>
+  <rect x="646" y="456" width="3" height="12" fill="rgba(255,255,255,.8)" rx="1"/>
+  <text x="665" y="466" fill="rgba(255,255,255,.8)" font-family="Inter,sans-serif" font-size="11">暂停 / 播放</text>
+</svg>

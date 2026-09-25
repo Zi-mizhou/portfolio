@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="nightBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a1a"/>
+      <stop offset="100%" stop-color="#12122a"/>
+    </linearGradient>
+    <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,200,100,.3)"/>
+      <stop offset="100%" stop-color="rgba(255,200,100,0)"/>
+    </radialGradient>
+    <linearGradient id="rain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(100,150,200,0)"/>
+      <stop offset="100%" stop-color="rgba(100,150,200,.3)"/>
+    </linearGradient>
+    <filter id="glowNight"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="800" height="500" fill="url(#nightBg)"/>
+  
+  <!-- Building silhouette - Archive Tower -->
+  <rect x="200" y="80" width="400" height="420" fill="#0e0e20" stroke="rgba(255,255,255,.04)"/>
+  <!-- Windows grid -->
+  <g opacity="0.8">
+    <!-- Row 1 -->
+    <rect x="220" y="100" width="30" height="40" fill="#1a1a30"/>
+    <rect x="260" y="100" width="30" height="40" fill="#1a1a30"/>
+    <rect x="300" y="100" width="30" height="40" fill="#1a1a30"/>
+    <rect x="340" y="100" width="30" height="40" fill="rgba(255,200,100,.15)"/>
+    <rect x="380" y="100" width="30" height="40" fill="#1a1a30"/>
+    <rect x="420" y="100" width="30" height="40" fill="rgba(255,200,100,.2)"/>
+    <rect x="460" y="100" width="30" height="40" fill="#1a1a30"/>
+    <rect x="500" y="100" width="30" height="40" fill="rgba(255,200,100,.1)"/>
+    <rect x="540" y="100" width="30" height="40" fill="#1a1a30"/>
+    <rect x="560" y="100" width="30" height="40" fill="rgba(255,200,100,.25)"/>
+    
+    <!-- Row 2 -->
+    <rect x="220" y="150" width="30" height="40" fill="rgba(255,200,100,.1)"/>
+    <rect x="260" y="150" width="30" height="40" fill="#1a1a30"/>
+    <rect x="300" y="150" width="30" height="40" fill="rgba(255,200,100,.2)"/>
+    <rect x="340" y="150" width="30" height="40" fill="#1a1a30"/>
+    <rect x="380" y="150" width="30" height="40" fill="rgba(255,200,100,.15)"/>
+    <rect x="420" y="150" width="30" height="40" fill="#1a1a30"/>
+    <rect x="460" y="150" width="30" height="40" fill="rgba(255,200,100,.1)"/>
+    <rect x="500" y="150" width="30" height="40" fill="#1a1a30"/>
+    <rect x="540" y="150" width="30" height="40" fill="rgba(255,200,100,.2)"/>
+    <rect x="560" y="150" width="30" height="40" fill="#1a1a30"/>
+    
+    <!-- Row 3 -->
+    <rect x="220" y="200" width="30" height="40" fill="#1a1a30"/>
+    <rect x="260" y="200" width="30" height="40" fill="rgba(255,200,100,.25)"/>
+    <rect x="300" y="200" width="30" height="40" fill="#1a1a30"/>
+    <rect x="340" y="200" width="30" height="40" fill="#1a1a30"/>
+    <rect x="380" y="200" width="30" height="40" fill="rgba(255,200,100,.1)"/>
+    <rect x="420" y="200" width="30" height="40" fill="#1a1a30"/>
+    <rect x="460" y="200" width="30" height="40" fill="rgba(255,200,100,.15)"/>
+    <rect x="500" y="200" width="30" height="40" fill="#1a1a30"/>
+    <rect x="540" y="200" width="30" height="40" fill="#1a1a30"/>
+    <rect x="560" y="200" width="30" height="40" fill="rgba(255,200,100,.2)"/>
+    
+    <!-- Row 4 -->
+    <rect x="220" y="250" width="30" height="40" fill="rgba(255,200,100,.15)"/>
+    <rect x="260" y="250" width="30" height="40" fill="#1a1a30"/>
+    <rect x="300" y="250" width="30" height="40" fill="#1a1a30"/>
+    <rect x="340" y="250" width="30" height="40" fill="rgba(255,200,100,.1)"/>
+    <rect x="380" y="250" width="30" height="40" fill="#1a1a30"/>
+    <rect x="420" y="250" width="30" height="40" fill="#1a1a30"/>
+    <rect x="460" y="250" width="30" height="40" fill="rgba(255,200,100,.2)"/>
+    <rect x="500" y="250" width="30" height="40" fill="rgba(255,200,100,.1)"/>
+    <rect x="540" y="250" width="30" height="40" fill="#1a1a30"/>
+    <rect x="560" y="250" width="30" height="40" fill="#1a1a30"/>
+    
+    <!-- Row 5 -->
+    <rect x="220" y="300" width="30" height="40" fill="#1a1a30"/>
+    <rect x="260" y="300" width="30" height="40" fill="#1a1a30"/>
+    <rect x="300" y="300" width="30" height="40" fill="rgba(255,200,100,.2)"/>
+    <rect x="340" y="300" width="30" height="40" fill="#1a1a30"/>
+    <rect x="380" y="300" width="30" height="40" fill="#1a1a30"/>
+    <rect x="420" y="300" width="30" height="40" fill="rgba(255,200,100,.1)"/>
+    <rect x="460" y="300" width="30" height="40" fill="#1a1a30"/>
+    <rect x="500" y="300" width="30" height="40" fill="rgba(255,200,100,.15)"/>
+    <rect x="540" y="300" width="30" height="40" fill="#1a1a30"/>
+    <rect x="560" y="300" width="30" height="40" fill="#1a1a30"/>
+    
+    <!-- Row 6 -->
+    <rect x="220" y="350" width="30" height="40" fill="rgba(255,200,100,.1)"/>
+    <rect x="260" y="350" width="30" height="40" fill="#1a1a30"/>
+    <rect x="300" y="350" width="30" height="40" fill="#1a1a30"/>
+    <rect x="340" y="350" width="30" height="40" fill="#1a1a30"/>
+    <rect x="380" y="350" width="30" height="40" fill="rgba(255,200,100,.2)"/>
+    <rect x="420" y="350" width="30" height="40" fill="#1a1a30"/>
+    <rect x="460" y="350" width="30" height="40" fill="#1a1a30"/>
+    <rect x="500" y="350" width="30" height="40" fill="rgba(255,200,100,.1)"/>
+    <rect x="540" y="350" width="30" height="40" fill="rgba(255,200,100,.15)"/>
+    <rect x="560" y="350" width="30" height="40" fill="#1a1a30"/>
+  </g>
+  
+  <!-- Roof -->
+  <polygon points="200,80 600,80 580,60 220,60" fill="#0a0a18"/>
+  
+  <!-- Glowing window (the mysterious one) -->
+  <rect x="340" y="100" width="30" height="40" fill="rgba(255,150,50,.4)" filter="url(#glowNight)"/>
+  <rect x="340" y="100" width="30" height="40" fill="none" stroke="rgba(255,200,100,.5)" stroke-width="1"/>
+  
+  <!-- Rain overlay -->
+  <rect width="800" height="500" fill="url(#rain)" opacity="0.15"/>
+  
+  <!-- Rain lines -->
+  <g stroke="rgba(150,180,210,.15)" stroke-width="1">
+    <line x1="50" y1="0" x2="45" y2="500"/>
+    <line x1="120" y1="0" x2="115" y2="500"/>
+    <line x1="180" y1="0" x2="175" y2="500"/>
+    <line x1="240" y1="0" x2="235" y2="500"/>
+    <line x1="310" y1="0" x2="305" y2="500"/>
+    <line x1="370" y1="0" x2="365" y2="500"/>
+    <line x1="430" y1="0" x2="425" y2="500"/>
+    <line x1="490" y1="0" x2="485" y2="500"/>
+    <line x1="560" y1="0" x2="555" y2="500"/>
+    <line x1="620" y1="0" x2="615" y2="500"/>
+    <line x1="680" y1="0" x2="675" y2="500"/>
+    <line x1="740" y1="0" x2="735" y2="500"/>
+    <line x1="790" y1="0" x2="785" y2="500"/>
+  </g>
+  
+  <!-- Ground / Entrance -->
+  <rect x="0" y="460" width="800" height="40" fill="#0a0a15"/>
+  <rect x="360" y="420" width="80" height="40" fill="rgba(255,200,100,.08)" stroke="rgba(255,200,100,.2)"/>
+  <text x="400" y="445" fill="rgba(255,200,100,.3)" font-family="serif" font-size="12" text-anchor="middle">借阅室</text>
+  
+  <!-- Lamp glow -->
+  <circle cx="400" cy="420" r="60" fill="url(#lampGlow)" opacity="0.3"/>
+  
+  <!-- Floating particles -->
+  <circle cx="100" cy="150" r="1" fill="rgba(255,200,100,.3)"/>
+  <circle cx="700" cy="200" r="1" fill="rgba(255,200,100,.2)"/>
+  <circle cx="150" cy="350" r="1" fill="rgba(255,200,100,.25)"/>
+  <circle cx="650" cy="300" r="1" fill="rgba(255,200,100,.15)"/>
+  
+  <!-- Title overlay -->
+  <rect x="16" y="16" width="280" height="60" rx="10" fill="rgba(0,0,0,.6)" stroke="rgba(255,255,255,.08)"/>
+  <text x="30" y="40" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="14" font-weight="700">📚 畸变存档楼</text>
+  <text x="30" y="60" fill="#8c9bb0" font-family="Inter,sans-serif" font-size="10">雨夜借阅室 · 沉浸式探索</text>
+  
+  <!-- Interaction hint -->
+  <rect x="16" y="440" width="160" height="44" rx="8" fill="rgba(0,0,0,.6)" stroke="rgba(255,255,255,.08)"/>
+  <text x="30" y="458" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="10">🖱 点击窗口探索</text>
+  <text x="30" y="474" fill="#8c9bb0" font-family="Inter,sans-serif" font-size="9">有些窗户会亮起来...</text>
+</svg>

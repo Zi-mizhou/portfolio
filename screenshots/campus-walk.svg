@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="sky4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2a3a"/>
+      <stop offset="100%" stop-color="#2a3a4a"/>
+    </linearGradient>
+    <linearGradient id="ground4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d3a2e"/>
+      <stop offset="100%" stop-color="#1e2e1f"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="800" height="350" fill="url(#sky4)"/>
+  
+  <!-- Stars -->
+  <circle cx="50" cy="30" r="1" fill="#ffffff" opacity="0.5"/>
+  <circle cx="120" cy="50" r="1.5" fill="#ffffff" opacity="0.7"/>
+  <circle cx="200" cy="25" r="1" fill="#ffffff" opacity="0.4"/>
+  <circle cx="300" cy="40" r="1.5" fill="#ffffff" opacity="0.6"/>
+  <circle cx="450" cy="20" r="1" fill="#ffffff" opacity="0.5"/>
+  <circle cx="550" cy="45" r="1" fill="#ffffff" opacity="0.6"/>
+  <circle cx="650" cy="30" r="1.5" fill="#ffffff" opacity="0.7"/>
+  <circle cx="720" cy="55" r="1" fill="#ffffff" opacity="0.5"/>
+  <circle cx="770" cy="25" r="1" fill="#ffffff" opacity="0.4"/>
+  <circle cx="80" cy="70" r="1" fill="#ffffff" opacity="0.3"/>
+  <circle cx="380" cy="65" r="1" fill="#ffffff" opacity="0.4"/>
+  <circle cx="600" cy="75" r="1" fill="#ffffff" opacity="0.3"/>
+  
+  <!-- Moon -->
+  <circle cx="620" cy="60" r="25" fill="#f0e6d3" opacity="0.9"/>
+  <circle cx="620" cy="60" r="30" fill="none" stroke="rgba(240,230,211,.2)" stroke-width="1"/>
+  <circle cx="620" cy="60" r="40" fill="none" stroke="rgba(240,230,211,.1)" stroke-width="1"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="350" width="800" height="150" fill="url(#ground4)"/>
+  
+  <!-- Path -->
+  <path d="M 200,500 Q 300,400 400,380 Q 500,360 550,350" stroke="#4a5a4b" stroke-width="40" fill="none" opacity="0.5"/>
+  <path d="M 200,500 Q 300,400 400,380 Q 500,360 550,350" stroke="#5a6a5c" stroke-width="2" fill="none" stroke-dasharray="8,6" opacity="0.3"/>
+  
+  <!-- Trees -->
+  <ellipse cx="100" cy="340" rx="30" ry="40" fill="#1a2a1b" opacity="0.8"/>
+  <ellipse cx="180" cy="330" rx="25" ry="35" fill="#1a2a1b" opacity="0.7"/>
+  <ellipse cx="700" cy="335" rx="28" ry="38" fill="#1a2a1b" opacity="0.8"/>
+  <ellipse cx="750" cy="325" rx="22" ry="30" fill="#1a2a1b" opacity="0.7"/>
+  
+  <!-- Building 1 - Library -->
+  <rect x="250" y="200" width="180" height="150" fill="#1e2e2e" stroke="rgba(255,255,255,.08)" rx="2"/>
+  <rect x="260" y="190" width="160" height="10" fill="#2a3a3a"/>
+  <rect x="270" y="210" width="20" height="20" fill="#ffb85f" opacity="0.6"/>
+  <rect x="300" y="210" width="20" height="20" fill="#ffb85f" opacity="0.4"/>
+  <rect x="330" y="210" width="20" height="20" fill="#ffb85f" opacity="0.7"/>
+  <rect x="360" y="210" width="20" height="20" fill="#ffb85f" opacity="0.5"/>
+  <rect x="390" y="210" width="20" height="20" fill="#ffb85f" opacity="0.6"/>
+  <rect x="420" y="210" width="20" height="20" fill="#ffb85f" opacity="0.4"/>
+  
+  <rect x="270" y="240" width="20" height="20" fill="#ffb85f" opacity="0.5"/>
+  <rect x="300" y="240" width="20" height="20" fill="#ffb85f" opacity="0.7"/>
+  <rect x="330" y="240" width="20" height="20" fill="#ffb85f" opacity="0.4"/>
+  <rect x="360" y="240" width="20" height="20" fill="#ffb85f" opacity="0.6"/>
+  <rect x="390" y="240" width="20" height="20" fill="#ffb85f" opacity="0.5"/>
+  <rect x="420" y="240" width="20" height="20" fill="#ffb85f" opacity="0.7"/>
+  
+  <rect x="270" y="270" width="20" height="20" fill="#ffb85f" opacity="0.6"/>
+  <rect x="300" y="270" width="20" height="20" fill="#ffb85f" opacity="0.4"/>
+  <rect x="330" y="270" width="20" height="20" fill="#ffb85f" opacity="0.5"/>
+  <rect x="360" y="270" width="20" height="20" fill="#ffb85f" opacity="0.7"/>
+  <rect x="390" y="270" width="20" height="20" fill="#ffb85f" opacity="0.6"/>
+  <rect x="420" y="270" width="20" height="20" fill="#ffb85f" opacity="0.4"/>
+  
+  <!-- Building 2 - Classroom -->
+  <rect x="460" y="220" width="140" height="130" fill="#1e2e2e" stroke="rgba(255,255,255,.08)" rx="2"/>
+  <rect x="468" y="230" width="16" height="16" fill="#ffb85f" opacity="0.5"/>
+  <rect x="490" y="230" width="16" height="16" fill="#ffb85f" opacity="0.7"/>
+  <rect x="512" y="230" width="16" height="16" fill="#ffb85f" opacity="0.4"/>
+  <rect x="534" y="230" width="16" height="16" fill="#ffb85f" opacity="0.6"/>
+  <rect x="556" y="230" width="16" height="16" fill="#ffb85f" opacity="0.5"/>
+  <rect x="578" y="230" width="16" height="16" fill="#ffb85f" opacity="0.7"/>
+  
+  <rect x="468" y="256" width="16" height="16" fill="#ffb85f" opacity="0.6"/>
+  <rect x="490" y="256" width="16" height="16" fill="#ffb85f" opacity="0.5"/>
+  <rect x="512" y="256" width="16" height="16" fill="#ffb85f" opacity="0.7"/>
+  <rect x="534" y="256" width="16" height="16" fill="#ffb85f" opacity="0.4"/>
+  <rect x="556" y="256" width="16" height="16" fill="#ffb85f" opacity="0.6"/>
+  <rect x="578" y="256" width="16" height="16" fill="#ffb85f" opacity="0.5"/>
+  
+  <!-- Character (first person view indicator) -->
+  <circle cx="400" cy="460" r="6" fill="#f2f6fb" opacity="0.8"/>
+  <circle cx="400" cy="460" r="10" fill="none" stroke="#f2f6fb" stroke-width="1" opacity="0.4"/>
+  <circle cx="400" cy="460" r="15" fill="none" stroke="#f2f6fb" stroke-width="1" opacity="0.2"/>
+  
+  <!-- HUD - Top left -->
+  <rect x="16" y="16" width="220" height="60" rx="8" fill="rgba(0,0,0,.6)" stroke="rgba(255,255,255,.1)"/>
+  <text x="30" y="36" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="12" font-weight="600">📍 图书馆广场</text>
+  <text x="30" y="56" fill="#8c9bb0" font-family="Inter,sans-serif" font-size="10">中国计量大学 · 下沙校区</text>
+  
+  <!-- HUD - Minimap -->
+  <rect x="664" y="16" width="120" height="80" rx="8" fill="rgba(0,0,0,.6)" stroke="rgba(255,255,255,.1)"/>
+  <text x="678" y="32" fill="#8c9bb0" font-family="Inter,sans-serif" font-size="8">MAP</text>
+  <circle cx="724" cy="60" r="3" fill="#4ee1be"/>
+  <circle cx="724" cy="60" r="6" fill="none" stroke="#4ee1be" stroke-width="1" opacity="0.5"/>
+  <path d="M 690,75 Q 700,65 710,70 Q 720,75 730,65" stroke="#5a6a5c" stroke-width="1" fill="none" opacity="0.5"/>
+  
+  <!-- HUD - Controls -->
+  <rect x="16" y="420" width="240" height="64" rx="8" fill="rgba(0,0,0,.6)" stroke="rgba(255,255,255,.1)"/>
+  <text x="30" y="440" fill="#8c9bb0" font-family="Inter,sans-serif" font-size="9">控制说明</text>
+  <text x="30" y="458" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="10">WASD - 移动</text>
+  <text x="140" y="458" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="10">鼠标 - 环顾</text>
+  <text x="30" y="476" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="10">Shift - 加速</text>
+  <text x="140" y="476" fill="#f2f6fb" font-family="Inter,sans-serif" font-size="10">Esc - 暂停</text>
+  
+  <!-- Crosshair -->
+  <circle cx="400" cy="250" r="3" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
+  <circle cx="400" cy="250" r="8" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+  <line x1="390" y1="250" x2="395" y2="250" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
+  <line x1="405" y1="250" x2="410" y2="250" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
+  <line x1="400" y1="240" x2="400" y2="245" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
+  <line x1="400" y1="255" x2="400" y2="260" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
+</svg>

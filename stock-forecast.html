@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b111d" />
+  <meta name="description" content="Signal 预测台：用趋势、区间和风险信号辅助观察股票走势。" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b111d'/%3E%3Cpath d='M14 42 25 31l8 7 17-18' fill='none' stroke='%234ee1be' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='20' r='4' fill='%23ffb65c'/%3E%3C/svg%3E" />
+  <title>Signal / 股票预测台</title>
+  <style>
+    :root {
+      --bg: #080d17;
+      --panel: #0e1624;
+      --panel-2: #121d2d;
+      --line: rgba(157, 180, 205, .15);
+      --line-strong: rgba(157, 180, 205, .25);
+      --ink: #f2f6fb;
+      --muted: #8c9bb0;
+      --muted-2: #607088;
+      --teal: #4ee1be;
+      --teal-deep: #1c9f8a;
+      --orange: #ffb65c;
+      --red: #ff7c7c;
+      --blue: #77a8ff;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--bg); }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 0%, rgba(53, 101, 145, .16), transparent 32rem),
+        radial-gradient(circle at 2% 24%, rgba(17, 123, 106, .08), transparent 30rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    button, select { font: inherit; }
+    button { cursor: pointer; }
+    .shell { width: min(1440px, calc(100% - 48px)); margin: 0 auto; padding: 28px 0 52px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, #164c55, #11263a); border: 1px solid rgba(78, 225, 190, .35); box-shadow: 0 8px 24px rgba(0,0,0,.22); }
+    .mark svg { width: 23px; height: 23px; }
+    .brand-name { font-size: 18px; letter-spacing: .02em; font-weight: 700; }
+    .brand-sub { color: var(--muted); font-size: 13px; margin-left: 7px; }
+    .top-actions { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 13px; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(78,225,190,.10); }
+    .ghost-btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 13px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.02); color: var(--muted); }
+    .ghost-btn:hover { color: var(--ink); border-color: var(--line-strong); background: rgba(255,255,255,.05); }
+    .eyebrow { margin: 0 0 8px; color: var(--teal); font-size: 12px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 24px; }
+    h1 { margin: 0; font-size: clamp(30px, 4vw, 46px); line-height: 1.05; letter-spacing: -.045em; }
+    .intro-copy { margin: 10px 0 0; max-width: 660px; color: var(--muted); }
+    .selector { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border: 1px solid var(--line-strong); border-radius: 12px; background: rgba(18,29,45,.72); }
+    .selector label { color: var(--muted); font-size: 13px; }
+    select { appearance: none; border: 0; outline: 0; color: var(--ink); background: transparent; font-weight: 700; padding-right: 20px; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 9px) 52%, calc(100% - 4px) 52%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
+    select option { background: #101a29; color: var(--ink); }
+    .grid { display: grid; gap: 16px; }
+    .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 16px; }
+    .card { border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg, rgba(19,30,47,.92), rgba(11,18,30,.92)); box-shadow: 0 18px 42px rgba(0,0,0,.12); }
+    .metric { min-height: 130px; padding: 19px 20px; position: relative; overflow: hidden; }
+    .metric::after { content: ""; position: absolute; right: -32px; bottom: -42px; width: 120px; height: 120px; border-radius: 50%; border: 1px solid rgba(78,225,190,.08); box-shadow: 0 0 0 20px rgba(78,225,190,.02), 0 0 0 40px rgba(78,225,190,.018); }
+    .metric-label { color: var(--muted); font-size: 13px; }
+    .metric-value { margin-top: 13px; font-size: 28px; font-weight: 750; letter-spacing: -.03em; }
+    .metric-note { margin-top: 5px; color: var(--muted-2); font-size: 12px; }
+    .positive { color: var(--teal); }
+    .warning { color: var(--orange); }
+    .main-grid { grid-template-columns: minmax(0, 1.58fr) minmax(310px, .82fr); align-items: stretch; }
+    .chart-card { min-height: 482px; padding: 22px 22px 18px; }
+    .card-head { display: flex; align-items: start; justify-content: space-between; gap: 18px; }
+    .card-title { margin: 0; font-size: 17px; font-weight: 700; }
+    .card-kicker { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+    .range { display: flex; gap: 5px; padding: 4px; border: 1px solid var(--line); border-radius: 10px; background: rgba(0,0,0,.12); }
+    .range button { border: 0; border-radius: 7px; padding: 6px 9px; color: var(--muted); background: transparent; font-size: 12px; }
+    .range button.active, .range button:hover { color: var(--ink); background: #223148; }
+    .legend { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin: 22px 0 8px 9px; color: var(--muted); font-size: 12px; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend i { display: inline-block; width: 18px; height: 2px; border-radius: 2px; background: var(--teal); }
+    .legend i.band { height: 8px; background: rgba(78,225,190,.18); border: 1px solid rgba(78,225,190,.26); }
+    .legend i.base { background: #8394aa; }
+    .chart-wrap { height: 308px; margin: 0 -2px; }
+    #chart { width: 100%; height: 100%; overflow: visible; }
+    .chart-grid { stroke: rgba(157,180,205,.12); stroke-width: 1; }
+    .axis-label { fill: #687990; font-size: 11px; }
+    .actual-line { fill: none; stroke: #dce8f5; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+    .forecast-line { fill: none; stroke: var(--teal); stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 0; }
+    .forecast-band { fill: rgba(78,225,190,.12); stroke: rgba(78,225,190,.2); stroke-width: 1; }
+    .forecast-divider { stroke: rgba(255,182,92,.8); stroke-width: 1; stroke-dasharray: 4 6; }
+    .chart-tip { fill: var(--teal); stroke: #0e1624; stroke-width: 3; }
+    .bottom-note { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding-top: 13px; color: var(--muted-2); font-size: 12px; }
+    .side-stack { display: grid; gap: 16px; }
+    .signal-card, .drivers-card { padding: 22px; }
+    .signal-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 20px 0 16px; }
+    .signal-word { font-size: 32px; font-weight: 750; letter-spacing: -.04em; }
+    .signal-badge { padding: 6px 9px; color: var(--teal); border: 1px solid rgba(78,225,190,.28); border-radius: 8px; background: rgba(78,225,190,.09); font-size: 12px; }
+    .meter { height: 8px; border-radius: 99px; overflow: hidden; background: #243247; }
+    .meter > span { display: block; width: 78%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #278a87, var(--teal)); }
+    .confidence-row { display: flex; justify-content: space-between; margin-top: 8px; color: var(--muted); font-size: 12px; }
+    .signal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+    .mini { padding: 12px; border: 1px solid var(--line); border-radius: 11px; background: rgba(0,0,0,.12); }
+    .mini-label { color: var(--muted); font-size: 12px; }
+    .mini-value { margin-top: 5px; font-size: 16px; font-weight: 700; }
+    .driver { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .driver:last-child { border-bottom: 0; padding-bottom: 0; }
+    .driver:first-child { padding-top: 20px; }
+    .driver-name { font-size: 14px; }
+    .driver-desc { color: var(--muted); font-size: 12px; }
+    .driver-score { color: var(--teal); font-weight: 700; font-size: 13px; }
+    .driver-bar { grid-column: 1 / -1; height: 4px; border-radius: 4px; background: #26344a; }
+    .driver-bar span { display: block; height: 100%; border-radius: inherit; background: var(--teal); }
+    .driver:nth-child(3) .driver-score, .driver:nth-child(3) .driver-bar span { color: var(--orange); background-color: var(--orange); }
+    .driver:nth-child(4) .driver-score, .driver:nth-child(4) .driver-bar span { color: var(--blue); background-color: var(--blue); }
+    .watch-card { margin-top: 16px; padding: 22px; }
+    .watchlist { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+    .watch-item { appearance: none; text-align: left; padding: 14px; color: var(--ink); border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.025); transition: .18s ease; }
+    .watch-item:hover, .watch-item.selected { border-color: rgba(78,225,190,.48); background: rgba(78,225,190,.07); transform: translateY(-1px); }
+    .watch-top { display: flex; justify-content: space-between; gap: 8px; }
+    .ticker { font-weight: 750; letter-spacing: .02em; }
+    .company { margin-top: 3px; color: var(--muted); font-size: 12px; }
+    .watch-price { margin-top: 15px; font-size: 19px; font-weight: 700; }
+    .watch-change { margin-top: 2px; color: var(--teal); font-size: 12px; }
+    .pill { display: inline-flex; align-items: center; gap: 5px; color: var(--teal); font-size: 11px; }
+    .pill::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+    .pill.caution { color: var(--orange); }
+    .disclaimer { display: flex; align-items: start; gap: 10px; margin-top: 18px; padding: 13px 15px; color: #b7c4d5; border: 1px solid rgba(255,182,92,.18); border-radius: 12px; background: rgba(255,182,92,.05); font-size: 12px; }
+    .disclaimer strong { color: var(--orange); font-weight: 700; }
+    .toast { position: fixed; right: 24px; bottom: 24px; max-width: 310px; padding: 12px 14px; color: var(--ink); border: 1px solid rgba(78,225,190,.24); border-radius: 10px; background: #142237; box-shadow: 0 12px 36px rgba(0,0,0,.3); opacity: 0; transform: translateY(10px); pointer-events: none; transition: .22s ease; font-size: 13px; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    @media (max-width: 980px) {
+      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .main-grid { grid-template-columns: 1fr; }
+      .watchlist { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 28px, 560px); padding-top: 18px; }
+      .topbar { margin-bottom: 24px; }
+      .brand-sub, .top-actions span:not(.status-dot) { display: none; }
+      .intro { display: block; }
+      .selector { margin-top: 18px; width: 100%; justify-content: space-between; }
+      .metrics { gap: 10px; }
+      .metric { min-height: 108px; padding: 15px; }
+      .metric-value { margin-top: 8px; font-size: 23px; }
+      .chart-card, .signal-card, .drivers-card, .watch-card { padding: 17px; }
+      .card-head { display: block; }
+      .range { margin-top: 15px; width: fit-content; }
+      .chart-wrap { height: 248px; }
+      .watchlist { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .watch-item { padding: 12px; }
+      .watch-price { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 16.5 8.4 12l3.1 2.9L20 6.5" stroke="#4ee1be" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.5" cy="6.5" r="1.4" fill="#ffb65c"/></svg></div>
+        <div><span class="brand-name">Signal</span><span class="brand-sub">股票预测台</span></div>
+      </div>
+      <div class="top-actions"><span class="status-dot" aria-hidden="true"></span><span>演示数据 · 已同步</span><button id="refreshBtn" class="ghost-btn" type="button"><span aria-hidden="true">↻</span> 刷新信号</button></div>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">Market intelligence / 01</p><h1 id="page-title">看清下一步，<br />先看区间。</h1><p class="intro-copy">用趋势、动量与市场情绪，生成一份可解释的短期走势观察。</p></div>
+      <div class="selector"><label for="stockSelect">正在观察</label><select id="stockSelect" aria-label="选择正在观察的股票"><option value="AAPL">AAPL · Apple</option><option value="NVDA">NVDA · NVIDIA</option><option value="TSLA">TSLA · Tesla</option><option value="MSFT">MSFT · Microsoft</option></select></div>
+    </section>
+
+    <section class="grid metrics" aria-label="核心指标">
+      <article class="card metric"><div class="metric-label">当前价格</div><div id="price" class="metric-value">$214.32</div><div id="change" class="metric-note positive">+1.84% · 今日</div></article>
+      <article class="card metric"><div class="metric-label">预测目标</div><div id="target" class="metric-value positive">$226.10</div><div id="targetNote" class="metric-note">未来 10 个交易日</div></article>
+      <article class="card metric"><div class="metric-label">预测空间</div><div id="upside" class="metric-value positive">+5.50%</div><div class="metric-note">基于中位情景</div></article>
+      <article class="card metric"><div class="metric-label">置信度</div><div id="confidence" class="metric-value warning">78 / 100</div><div class="metric-note">模型一致性评分</div></article>
+    </section>
+
+    <section class="grid main-grid">
+      <article class="card chart-card">
+        <div class="card-head"><div><h2 class="card-title">价格路径与预测区间</h2><p class="card-kicker">过去 30 日实际走势 · 未来 10 日模型估计</p></div><div class="range" role="group" aria-label="选择时间范围"><button type="button" data-range="1M" class="active">1M</button><button type="button" data-range="3M">3M</button><button type="button" data-range="6M">6M</button></div></div>
+        <div class="legend"><span><i></i>实际收盘</span><span><i class="band"></i>预测区间</span><span><i class="base"></i>基准线</span></div>
+        <div class="chart-wrap"><svg id="chart" viewBox="0 0 800 300" role="img" aria-label="股票价格历史和预测趋势图"></svg></div>
+        <div class="bottom-note"><span id="chartDate">更新于 2026-09-21 15:00</span><span>区间覆盖度：80%</span></div>
+      </article>
+
+      <div class="side-stack">
+        <article class="card signal-card"><div class="card-head"><div><h2 class="card-title">模型信号</h2><p class="card-kicker">综合动量、趋势与情绪</p></div><span class="signal-badge">短期观察</span></div><div class="signal-top"><div id="signalWord" class="signal-word positive">偏多</div><span id="signalDirection" class="positive">↗ 上行概率较高</span></div><div class="meter" aria-label="置信度 78%"><span id="confidenceMeter"></span></div><div class="confidence-row"><span>低置信度</span><strong id="confidenceText">78% 置信度</strong><span>高置信度</span></div><div class="signal-grid"><div class="mini"><div class="mini-label">预测下沿</div><div id="lowTarget" class="mini-value">$219.40</div></div><div class="mini"><div class="mini-label">预测上沿</div><div id="highTarget" class="mini-value">$231.80</div></div><div class="mini"><div class="mini-label">波动风险</div><div id="risk" class="mini-value warning">中等</div></div><div class="mini"><div class="mini-label">持有周期</div><div class="mini-value">7–10 日</div></div></div></article>
+        <article class="card drivers-card"><div class="card-head"><div><h2 class="card-title">信号拆解</h2><p class="card-kicker">影响预测的主要因子</p></div></div><div id="drivers"><div class="driver"><div><div class="driver-name">趋势延续性</div><div class="driver-desc">价格位于短期均线上方</div></div><div class="driver-score">82</div><div class="driver-bar"><span style="width:82%"></span></div></div><div class="driver"><div><div class="driver-name">动量强度</div><div class="driver-desc">近五日成交量温和放大</div></div><div class="driver-score">74</div><div class="driver-bar"><span style="width:74%"></span></div></div><div class="driver"><div><div class="driver-name">估值压力</div><div class="driver-desc">估值处于历史中位附近</div></div><div class="driver-score">53</div><div class="driver-bar"><span style="width:53%"></span></div></div></div></article>
+      </div>
+    </section>
+
+    <section class="card watch-card" aria-labelledby="watch-title"><div class="card-head"><div><h2 id="watch-title" class="card-title">关注列表</h2><p class="card-kicker">点击股票，查看对应的预测信号</p></div><span class="card-kicker">4 个标的</span></div><div id="watchlist" class="watchlist"></div></section>
+    <div class="disclaimer"><span aria-hidden="true">ⓘ</span><div><strong>重要提示：</strong>本页面使用演示数据与简化模型，仅用于展示信息组织方式，不构成投资建议、收益承诺或买卖依据。真实决策请结合可靠行情、基本面和个人风险承受能力。</div></div>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite">信号已刷新</div>
+  <script>
+    const stocks = {
+      AAPL: { name: 'Apple', price: 214.32, change: '+1.84%', target: 226.10, low: 219.40, high: 231.80, confidence: 78, risk: '中等', signal: '偏多', direction: '↗ 上行概率较高', series: [178,181,179,184,187,185,190,188,194,192,198,201,199,204,207,203,208,211,209,213,211,215,212,216,214,218,216,220,218,214], forecast: [214,217,219,222,224,226], band: [3.2,3.6,4.0,4.4,4.8,5.3], drivers: [['趋势延续性','价格位于短期均线上方',82],['动量强度','近五日成交量温和放大',74],['估值压力','估值处于历史中位附近',53]] },
+      NVDA: { name: 'NVIDIA', price: 142.68, change: '+2.63%', target: 154.90, low: 148.10, high: 162.70, confidence: 84, risk: '偏高', signal: '强势', direction: '↗ 动量明显占优', series: [112,115,117,114,119,121,120,124,127,125,130,128,133,136,134,138,137,140,138,143,141,145,148,146,149,151,148,145,140,143], forecast: [143,147,150,153,155,157], band: [4.3,4.8,5.4,6.1,6.8,7.5], drivers: [['趋势延续性','价格远高于中期均线',91],['动量强度','相对强弱指标持续走高',88],['估值压力','高估值放大回撤风险',42]] },
+      TSLA: { name: 'Tesla', price: 318.44, change: '-0.72%', target: 309.20, low: 295.80, high: 324.60, confidence: 61, risk: '偏高', signal: '震荡', direction: '→ 多空力量接近', series: [286,294,290,302,306,299,305,311,307,316,321,317,312,320,315,322,328,324,331,326,319,323,317,321,326,319,315,312,316,318], forecast: [318,316,314,311,310,309], band: [6,6.8,7.5,8.1,8.8,9.5], drivers: [['趋势延续性','短期趋势出现钝化',58],['动量强度','波动放大但方向不明',49],['估值压力','预期波动仍然较高',36]] },
+      MSFT: { name: 'Microsoft', price: 511.24, change: '+0.96%', target: 527.60, low: 519.80, high: 535.40, confidence: 81, risk: '中等', signal: '偏多', direction: '↗ 稳定上行结构', series: [452,456,454,461,464,462,468,471,469,474,478,476,482,486,484,490,493,491,496,499,497,502,505,503,507,510,508,513,509,511], forecast: [511,515,519,522,525,528], band: [3.8,4.1,4.5,4.9,5.3,5.9], drivers: [['趋势延续性','中短期均线保持向上',86],['动量强度','回撤后快速修复',79],['估值压力','估值水平处于可控范围',61]] }
+    };
+    const $ = (id) => document.getElementById(id);
+    const formatMoney = (v) => '$' + v.toFixed(2);
+    function makePath(points, x, y) { return points.map((v, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(v).toFixed(1)).join(' '); }
+    function drawChart(stock) {
+      const svg = $('chart');
+      const hist = stock.series, fc = stock.forecast;
+      const all = hist.concat(fc), min = Math.min(...all) - 12, max = Math.max(...all) + 12;
+      const x0 = 50, x1 = 774, y0 = 20, y1 = 260, total = all.length - 1;
+      const x = i => x0 + i / total * (x1 - x0), y = v => y1 - (v - min) / (max - min) * (y1 - y0);
+      const divider = x(hist.length - 1);
+      const upper = fc.map((v, i) => v + stock.band[i]), lower = fc.map((v, i) => v - stock.band[i]);
+      const bandPath = makePath(upper.map((v, i) => [i + hist.length - 1, v]), p => x(p[0]), p => y(p[1])) + ' ' + lower.slice().reverse().map((v, i) => { const idx = lower.length - 1 - i; return 'L' + x(idx + hist.length - 1).toFixed(1) + ' ' + y(v).toFixed(1); }).join(' ') + ' Z';
+      const ticks = Array.from({length: 5}, (_, i) => min + (max - min) * i / 4);
+      const grid = ticks.map((v, i) => `<line class="chart-grid" x1="${x0}" x2="${x1}" y1="${y(v)}" y2="${y(v)}"/><text class="axis-label" x="0" y="${y(v)+4}">${formatMoney(v).replace('.00','')}</text>`).join('');
+      const labels = ['08/21','08/28','09/04','09/11','09/21'];
+      const xlabels = labels.map((label, i) => `<text class="axis-label" text-anchor="${i===0?'start':i===labels.length-1?'end':'middle'}" x="${x0+(x1-x0)*i/4}" y="289">${label}</text>`).join('');
+      const histPath = makePath(hist, i => x(i), y), fcPath = makePath(fc.map((v,i) => i===0 ? hist[hist.length-1] : v), i => x(i + hist.length - 1), y);
+      svg.innerHTML = `${grid}<path class="forecast-band" d="${bandPath}"/><line class="forecast-divider" x1="${divider}" x2="${divider}" y1="${y0}" y2="${y1}"/><path class="actual-line" d="${histPath}"/><path class="forecast-line" d="${fcPath}"/><circle class="chart-tip" cx="${x(hist.length-1)}" cy="${y(hist[hist.length-1])}" r="5"/><circle class="chart-tip" cx="${x(all.length-1)}" cy="${y(fc[fc.length-1])}" r="5"/>${xlabels}`;
+    }
+    function renderDrivers(stock) { $('drivers').innerHTML = stock.drivers.map((d, i) => `<div class="driver"><div><div class="driver-name">${d[0]}</div><div class="driver-desc">${d[1]}</div></div><div class="driver-score">${d[2]}</div><div class="driver-bar"><span style="width:${d[2]}%"></span></div></div>`).join(''); }
+    function renderWatchlist() { $('watchlist').innerHTML = Object.entries(stocks).map(([ticker, s]) => `<button class="watch-item ${ticker === $('stockSelect').value ? 'selected' : ''}" data-ticker="${ticker}" type="button"><div class="watch-top"><div><div class="ticker">${ticker}</div><div class="company">${s.name}</div></div><span class="pill ${s.signal === '震荡' ? 'caution' : ''}">${s.signal}</span></div><div class="watch-price">${formatMoney(s.price)}</div><div class="watch-change ${s.change.startsWith('-') ? 'warning' : ''}">${s.change} · 预测 ${formatMoney(s.target)}</div></button>`).join(''); document.querySelectorAll('.watch-item').forEach(btn => btn.addEventListener('click', () => { $('stockSelect').value = btn.dataset.ticker; update(btn.dataset.ticker); })); }
+    function update(ticker) { const s = stocks[ticker]; $('price').textContent = formatMoney(s.price); $('change').textContent = s.change + ' · 今日'; $('change').className = 'metric-note ' + (s.change.startsWith('-') ? 'warning' : 'positive'); $('target').textContent = formatMoney(s.target); const upside = (s.target / s.price - 1) * 100; $('upside').textContent = (upside >= 0 ? '+' : '') + upside.toFixed(2) + '%'; $('upside').className = 'metric-value ' + (upside >= 0 ? 'positive' : 'warning'); $('confidence').textContent = s.confidence + ' / 100'; $('confidenceMeter').style.width = s.confidence + '%'; $('confidenceText').textContent = s.confidence + '% 置信度'; $('signalWord').textContent = s.signal; $('signalWord').className = 'signal-word ' + (s.signal === '震荡' ? 'warning' : 'positive'); $('signalDirection').textContent = s.direction; $('signalDirection').className = s.signal === '震荡' ? 'warning' : 'positive'; $('lowTarget').textContent = formatMoney(s.low); $('highTarget').textContent = formatMoney(s.high); $('risk').textContent = s.risk; $('risk').className = 'mini-value ' + (s.risk === '中等' ? 'warning' : 'warning'); drawChart(s); renderDrivers(s); renderWatchlist(); }
+    $('stockSelect').addEventListener('change', e => update(e.target.value));
+    document.querySelectorAll('[data-range]').forEach(btn => btn.addEventListener('click', () => { document.querySelectorAll('[data-range]').forEach(b => b.classList.remove('active')); btn.classList.add('active'); showToast('已切换到 ' + btn.dataset.range + ' 视图'); }));
+    $('refreshBtn').addEventListener('click', () => { $('chartDate').textContent = '更新于 2026-09-21 15:' + String(new Date().getMinutes()).padStart(2,'0'); showToast('信号已刷新，演示数据保持不变'); });
+    let toastTimer; function showToast(message) { $('toast').textContent = message; $('toast').classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').classList.remove('show'), 2200); }
+    update('AAPL');
+  </script>
+</body>
+</html>
