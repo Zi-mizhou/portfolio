@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="张少的个人作品集 - 计算机科学与技术专业，专注数据可视化、3D交互、AI工具、开源项目。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%237c3aed'/></svg>">
 <title>张少 · Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -621,6 +623,163 @@ footer{
   .container{padding:0 16px}
   nav{padding:14px 20px}
 }
+/* ====== Filter Buttons ====== */
+.filter-bar{
+  display:flex;gap:10px;flex-wrap:wrap;
+  margin-bottom:32px;
+}
+.filter-btn{
+  padding:8px 18px;
+  border-radius:99px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  color:var(--text2);
+  font-size:13px;font-weight:500;
+  cursor:pointer;
+  transition:all .25s;
+}
+.filter-btn:hover{color:var(--text);border-color:rgba(124,58,237,.3)}
+.filter-btn.active{
+  background:rgba(124,58,237,.15);
+  border-color:var(--accent);
+  color:var(--accent2);
+}
+
+/* ====== Typewriter ====== */
+.typewriter-line{
+  display:inline;
+}
+.typewriter-cursor{
+  display:inline-block;
+  width:2px;height:1em;
+  background:var(--accent);
+  vertical-align:middle;
+  margin-left:2px;
+  animation:cursorBlink 1s step-end infinite;
+}
+
+/* ====== Count Up ====== */
+.stat-num[data-count]{
+  display:inline-block;
+}
+
+/* ====== Back to Top ====== */
+#backToTop{
+  position:fixed;
+  bottom:28px;right:28px;
+  width:44px;height:44px;
+  border-radius:12px;
+  background:var(--surface);
+  border:1px solid var(--border2);
+  backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+  cursor:pointer;
+  z-index:90;
+  opacity:0;
+  transform:translateY(10px);
+  transition:all .3s;
+  color:var(--text2);
+}
+#backToTop.visible{opacity:1;transform:translateY(0)}
+#backToTop:hover{
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent);
+  transform:translateY(-2px);
+  box-shadow:0 4px 20px var(--accent-glow);
+}
+
+/* ====== Scroll Progress ====== */
+#scrollProgress{
+  position:fixed;
+  top:0;left:0;
+  height:2px;
+  width:0;
+  background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));
+  z-index:200;
+  transition:width .1s;
+}
+
+/* ====== Custom Cursor ====== */
+.custom-cursor{
+  position:fixed;
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--accent);
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:width .2s,height .2s,background .2s;
+}
+.custom-cursor.hover{
+  width:32px;height:32px;
+  background:rgba(124,58,237,.2);
+  border:2px solid var(--accent);
+}
+
+/* ====== Project Modal ====== */
+.modal-overlay{
+  position:fixed;inset:0;
+  background:rgba(8,11,20,.85);
+  backdrop-filter:blur(8px);
+  z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;
+  transition:all .3s;
+}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal{
+  background:var(--bg2);
+  border:1px solid var(--border2);
+  border-radius:var(--radius);
+  max-width:700px;width:90%;
+  max-height:85vh;
+  overflow-y:auto;
+  transform:scale(.9);
+  transition:transform .3s;
+}
+.modal-overlay.active .modal{transform:scale(1)}
+.modal-thumb{width:100%;height:280px;overflow:hidden;position:relative}
+.modal-thumb img{width:100%;height:100%;object-fit:cover}
+.modal-body{padding:32px}
+.modal-type{
+  display:inline-block;
+  padding:4px 14px;
+  border-radius:99px;
+  font-size:12px;font-weight:600;
+  background:rgba(124,58,237,.12);
+  color:var(--accent2);
+  border:1px solid rgba(124,58,237,.2);
+  margin-bottom:12px;
+}
+.modal-title{font-size:24px;font-weight:700;margin-bottom:12px}
+.modal-desc{color:var(--text2);font-size:15px;line-height:1.8;margin-bottom:20px}
+.modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.modal-tags span{
+  padding:4px 12px;
+  border-radius:99px;
+  font-size:12px;font-weight:500;
+  background:var(--surface2);
+  color:var(--text2);
+  border:1px solid var(--border);
+}
+.modal-actions{display:flex;gap:10px}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  width:36px;height:36px;
+  border-radius:50%;
+  background:rgba(0,0,0,.5);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  font-size:18px;color:var(--text);
+  z-index:10;
+  transition:all .2s;
+}
+.modal-close:hover{background:var(--accent);border-color:var(--accent)}
+
+/* ====== Scrollbar ====== */
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:#1a2040;border-radius:99px}
@@ -629,8 +788,10 @@ footer{
 </head>
 <body>
 
+<div id="scrollProgress"></div>
 <canvas id="particles"></canvas>
 <div id="cursor-glow"></div>
+<div class="custom-cursor"></div>
 
 <!-- Nav -->
 <nav id="nav">
@@ -666,7 +827,7 @@ footer{
     <h1 class="reveal">
       <span class="gradient">张少</span><span class="cursor-line"></span>
     </h1>
-    <p class="subtitle reveal">热爱技术，用代码创造可能</p>
+    <p class="subtitle reveal"><span class="typewriter-line" id="typewriterText"></span><span class="typewriter-cursor"></span></p>
     <p class="desc reveal">
       计算机科学与技术专业。喜欢把想法变成能动的东西——
       从数据仪表盘到 3D 校园漫游，从小程序到 AI 工具，
@@ -686,6 +847,7 @@ footer{
     <div class="line"></div>
     <span class="label">08 Projects</span>
   </div>
+  <div class="filter-bar reveal" id="filterBar"></div>
   <div class="projects-grid" id="projectsGrid"></div>
 </section>
 
@@ -710,17 +872,17 @@ footer{
       <p>计算机科学与技术专业，热爱编程与创作。喜欢用代码把想法变成现实，每个项目都倾注了真诚的努力。</p>
       <p>相信技术不只是解决问题的工具，更是探索可能性的方式。写代码之外，我也喜欢摄影、剪辑、和尝试各种新东西。</p>
       <div class="links">
-        <a href="https://github.com/" target="_blank" class="social-link">🐙</a>
-        <a href="mailto:" class="social-link">📧</a>
+        <a href="https://github.com/Zi-mizhou" target="_blank" class="social-link">🐙</a>
+        <a href="mailto:3772023658@qq.com" class="social-link">📧</a>
       </div>
     </div>
     <div class="about-stats">
       <div class="stat-card">
-        <div class="stat-num">8+</div>
+        <div class="stat-num" data-count="8">8+</div>
         <div class="stat-label">Projects</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">6+</div>
+        <div class="stat-num" data-count="6">6+</div>
         <div class="stat-label">Tech Stack</div>
       </div>
       <div class="stat-card">
@@ -745,11 +907,16 @@ footer{
     <h2>一起<span class="gradient">创造点什么？</span></h2>
     <p>不管你有什么想法，或者只是想打个招呼，都欢迎联系我。</p>
     <div class="contact-buttons">
-      <a href="mailto:your-email@example.com" class="btn btn-primary">📧 发送邮件</a>
-      <a href="https://github.com/" target="_blank" class="btn btn-secondary">🐙 GitHub</a>
+      <a href="mailto:3772023658@qq.com" class="btn btn-primary">📧 发送邮件</a>
+      <a href="https://github.com/Zi-mizhou" target="_blank" class="btn btn-secondary">🐙 GitHub</a>
     </div>
   </div>
 </section>
+
+<div id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalContent"></div>
+</div>
 
 <footer>
   <div class="container">
@@ -841,7 +1008,8 @@ const projects = [
     tags:['计算机视觉','测量学','SCI','科研'],
     screenshot:'sci-paper',
     file:null,
-    label:null
+    label:null,
+    status:'论文撰写中'
   }
 ];
 
@@ -858,28 +1026,94 @@ const skills = [
 ];
 
 // ===================== RENDER =====================
+const filterCategories = [
+  {label:'全部', value:'all'},
+  {label:'数据可视化', value:'数据'},
+  {label:'3D 交互', value:'3D'},
+  {label:'AI 工具', value:'AI'},
+  {label:'创意作品', value:'创意'},
+  {label:'开源工具', value:'开源'},
+  {label:'学术论文', value:'学术'}
+];
+
+let activeFilter = 'all';
+
+function renderFilterBar(){
+  const bar = document.getElementById('filterBar');
+  bar.innerHTML = filterCategories.map((f,i)=>`
+    <button class="filter-btn ${i===0?'active':''}" data-filter="${f.value}" onclick="setFilter('${f.value}')">${f.label}</button>
+  `).join('');
+}
+
+function setFilter(filter){
+  activeFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.filter === filter);
+  });
+  renderProjects();
+}
+
 function renderProjects(){
   const grid = document.getElementById('projectsGrid');
-  grid.innerHTML = projects.map((p,i)=>{
+  const filtered = projects.filter(p => {
+    if(activeFilter === 'all') return true;
+    return p.type.includes(activeFilter);
+  });
+  grid.innerHTML = filtered.map((p,i)=>{
     const cls = p.featured ? 'featured' : '';
     const stagger = `stagger-${(i%4)+1}`;
     const animCls = i%2===0 ? 'reveal' : 'reveal-scale';
+    const statusBadge = p.status ? `<span style="margin-left:8px;padding:2px 8px;border-radius:99px;font-size:10px;background:rgba(236,72,153,.15);color:var(--accent3);border:1px solid rgba(236,72,153,.3)">${p.status}</span>` : '';
+    const clickable = p.file ? `window.open('${p.file}','_blank')` : `openModal(${projects.indexOf(p)})`;
+    const clickableAttr = `onclick="${clickable}"`;
+    const cursorStyle = p.file ? 'cursor:pointer' : 'cursor:pointer';
     return `
-      <div class="project-card ${cls} ${animCls} ${stagger}" onclick="${p.file?`window.open('${p.file}','_blank')`:''}" ${p.file?'style="cursor:pointer"':'style="cursor:default;opacity:.7"'}>
+      <div class="project-card ${cls} ${animCls} ${stagger}" ${clickableAttr} style="${cursorStyle}">
         <div class="card-thumb">
           <div class="bg" style="background:url('screenshots/${p.screenshot}.svg') center/cover no-repeat,#111"></div>
           <div class="card-arrow">↗</div>
         </div>
         <div class="card-body">
-          <span class="card-type">${p.type}</span>
+          <span class="card-type">${p.type}</span>${statusBadge}
           <h3 class="card-title">${p.name}</h3>
           <p class="card-desc">${p.desc}</p>
           <div class="card-tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div>
-          ${p.file?`<div style="margin-top:12px;font-size:13px;color:var(--accent2);font-weight:600">${p.label} →</div>`:''}
+          ${p.file?`<div style="margin-top:12px;font-size:13px;color:var(--accent2);font-weight:600">${p.label} →</div>`:'<div style="margin-top:12px;font-size:13px;color:var(--text3);font-weight:500">点击查看详情</div>'}
         </div>
       </div>
     `;
   }).join('');
+}
+
+function openModal(index){
+  const p = projects[index];
+  const modal = document.getElementById('modalContent');
+  const modalOverlay = document.getElementById('modalOverlay');
+  modal.innerHTML = `
+    <div style="position:relative">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-thumb">
+        <img src="screenshots/${p.screenshot}.svg" alt="${p.name}">
+      </div>
+      <div class="modal-body">
+        <span class="modal-type">${p.type}</span>
+        ${p.status?`<span style="margin-left:8px;padding:2px 8px;border-radius:99px;font-size:10px;background:rgba(236,72,153,.15);color:var(--accent3);border:1px solid rgba(236,72,153,.3)">${p.status}</span>`:''}
+        <h3 class="modal-title">${p.name}</h3>
+        <p class="modal-desc">${p.desc}</p>
+        <div class="modal-tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+        <div class="modal-actions">
+          ${p.file?`<a href="${p.file}" target="_blank" class="btn btn-primary">${p.label} →</a>`:`<span style="font-size:14px;color:var(--text3)">论文撰写中，暂未公开</span>`}
+        </div>
+      </div>
+    </div>
+  `;
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
 }
 
 function renderSkills(){
@@ -1015,19 +1249,144 @@ function initScrollReveal(){
   });
 }
 
+// ===================== TYPEWRITER =====================
+const typewriterTexts = ['热爱技术，用代码创造可能', '用代码把想法变成现实', '每个项目都是一次成长的见证'];
+let typewriterIndex = 0, charIndex = 0, isDeleting = false, typeTimer;
+
+function typeWriter(){
+  const el = document.getElementById('typewriterText');
+  if(!el) return;
+  const current = typewriterTexts[typewriterIndex];
+  if(isDeleting){
+    el.textContent = current.substring(0, charIndex-1);
+    charIndex--;
+  } else {
+    el.textContent = current.substring(0, charIndex+1);
+    charIndex++;
+  }
+  if(!isDeleting && charIndex === current.length){
+    typeTimer = setTimeout(()=>{isDeleting=true; typeWriter()}, 2500);
+    return;
+  }
+  if(isDeleting && charIndex === 0){
+    isDeleting = false;
+    typewriterIndex = (typewriterIndex+1) % typewriterTexts.length;
+    typeTimer = setTimeout(typeWriter, 400);
+    return;
+  }
+  typeTimer = setTimeout(typeWriter, isDeleting ? 40 : 80);
+}
+
+// ===================== COUNT UP =====================
+function initCountUp(){
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el = e.target;
+        const text = el.textContent;
+        const match = text.match(/(\d+)/);
+        if(match){
+          const target = parseInt(match[1]);
+          const suffix = text.replace(match[0],'');
+          let current = 0;
+          const step = Math.max(1, Math.floor(target/30));
+          const timer = setInterval(()=>{
+            current += step;
+            if(current >= target){
+              current = target;
+              clearInterval(timer);
+            }
+            el.textContent = current + suffix;
+          }, 30);
+        }
+        observer.unobserve(el);
+      }
+    });
+  },{threshold:0.5});
+  document.querySelectorAll('.stat-num[data-count]').forEach(el=>observer.observe(el));
+}
+
+// ===================== BACK TO TOP =====================
+function initBackToTop(){
+  const btn = document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{
+    btn.classList.toggle('visible', window.scrollY > 300);
+  },{passive:true});
+}
+
+// ===================== SCROLL PROGRESS =====================
+function initScrollProgress(){
+  const bar = document.getElementById('scrollProgress');
+  window.addEventListener('scroll',()=>{
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    bar.style.width = progress + '%';
+  },{passive:true});
+}
+
+// ===================== CUSTOM CURSOR =====================
+function initCustomCursor(){
+  const cursor = document.querySelector('.custom-cursor');
+  if(!cursor) return;
+  // 只在桌面端显示
+  if(window.matchMedia('(pointer:coarse)').matches) return;
+  let cx=0,cy=0,tx=0,ty=0;
+  document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY});
+  document.addEventListener('mouseover',e=>{
+    if(e.target.closest('a,button,.filter-btn,.project-card')){
+      cursor.classList.add('hover');
+    }
+  });
+  document.addEventListener('mouseout',e=>{
+    if(e.target.closest('a,button,.filter-btn,.project-card')){
+      cursor.classList.remove('hover');
+    }
+  });
+  function tick(){
+    cx+=(tx-cx)*0.2;
+    cy+=(ty-cy)*0.2;
+    cursor.style.left=cx+'px';
+    cursor.style.top=cy+'px';
+    requestAnimationFrame(tick);
+  }
+  tick();
+}
+
 // ===================== INIT =====================
+renderFilterBar();
 renderProjects();
 renderSkills();
 initParticles();
 initCursorGlow();
 initNav();
+initBackToTop();
+initScrollProgress();
+initCustomCursor();
+typeWriter();
+// Mobile particle reduction
+if(window.innerWidth < 768){
+  document.getElementById('particles').style.opacity = '0.3';
+}
 setTimeout(()=>{
   initScrollReveal();
-  // Trigger initial reveals for hero elements already in viewport
   document.querySelectorAll('.hero-content > .reveal').forEach((el,i)=>{
     setTimeout(()=>el.classList.add('visible'), 100 + i*150);
   });
 }, 50);
+
+// Stats count-up
+setTimeout(()=>{
+  document.querySelectorAll('.stat-num').forEach((el,i)=>{
+    el.setAttribute('data-count','');
+  });
+  initCountUp();
+}, 60);
+
+// Escape to close modal
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeModal();
+});
 </script>
 </body>
 </html>
